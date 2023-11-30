@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      BiblioFriki
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,9 +12,18 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+  <app-botones></app-botones>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <form [formGroup]="formu" (ngSubmit)="submit()">
+
+    <ion-input type="email" placeholder="email" [formControl]="formu.controls.email"></ion-input>
+
+    <ion-input type="text" placeholder="nombre" [formControl]="formu.controls.nombre"></ion-input>
+    <ion-input type="text" placeholder="Telefono" [formControl]="formu.controls.telefono"></ion-input>
+    <ion-button type="submit" expand="block" fill="clear" shape="round">
+      Enviar
+    </ion-button>
+  </form>
+
+  
 </ion-content>

@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'catalogo-page',
+    loadChildren: () => import('./pages/catalogo-page/catalogo-page.module').then( m => m.CatalogoPagePageModule)
+  },
+  {
+    path: 'mis-prestamos-page',
+    loadChildren: () => import('./pages/mis-prestamos-page/mis-prestamos-page.module').then( m => m.MisPrestamosPagePageModule)
+  },
+  {
+    path: 'libro-page/:id',
+    loadChildren: () => import('./pages/libro-page/libro-page.module').then( m => m.LibroPagePageModule)
+  },
+  {
+    path: 'borrado/:id',
+    loadChildren: () => import('./pages/borrado/borrado.module').then( m => m.BorradoPageModule)
+  },
 ];
 
 @NgModule({

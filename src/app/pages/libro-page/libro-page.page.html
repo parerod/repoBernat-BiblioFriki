@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>libroPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">libroPage</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-botones></app-botones>
+
+  <app-detalle *ngIf = "librillo != undefined" [id] = "librillo.id" [isbn] = "librillo.isbn" [titulo] = "librillo.titulo" [autores] = "librillo.autores" [editorial] = "librillo.editorial" [descripcion] = "librillo.descripcion" [fecha] = "librillo.fecha"></app-detalle>
+</ion-content>

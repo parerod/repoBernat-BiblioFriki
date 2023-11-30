@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Libro } from '../interfaces/libro';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServCatalogoService {
 
-  catalogo=[
+
+
+  catalogo : Libro[]=[
     {
         "id": 1,
         "isbn": "8434469219",
@@ -322,9 +328,15 @@ export class ServCatalogoService {
         "descripcion": "De Roma a Poniente ofrece al lector una amplia muestra de parecidos razonables entre la sociedad retratada en la exitosa serie Juego de Tronos, inspirada en las novelas de George R. R. Martin, y la vida en la Roma clásica. La premisa es, a primera vista, sorprendente: el Derecho de los Siete Reinos es Derecho romano, pero se justifica al abordarse el tratamiento en la saga de cuestiones como el status de libertad frente a la condición de esclavitud, la herencia, las relaciones de parentesco, la represión del adulterio y del incesto o el castigo a los parricidas. Y, muy en especial, el papel reservado a las mujeres, con sus avances y retrocesos. De manera sutil, fluyen entre las tramas políticas y personales de Westeros (y Essos) las normas del sistema jurídico más rico y complejo de la Antigüedad, dotado de una perfección técnica que no deja de admirar a quienes se acercan, en nuestros días, a estudiarlo. Pero, por encima de todo, esta obra es un homenaje de la autora a Juego de Tronos, la serie total. Sus fieles seguidores podrán revivir las escenas más emocionantes a través de las semblanzas de sus personajes protagonistas y de sus imprescindibles secundarios, así como disfrutar de muchos de sus agudos diálogos. Un tributo muy personal, una visión diferente y arriesgada desde la órbita académica, pero al alcance de cualquier amante de la cultura clásica y de la propia serie. No en vano, hay tantos Juegos de Tronos como espectadores."
     }
 ]
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getAll(){
-    return this.catalogo;
-  } 
+  public getAll():Observable<Libro[]>{
+    return this.http.get<Libro[]>(`${environment.apiURL}/catalogo`);
+  }
+
+  public getOne(id: number): Observable<Libro>{
+
+    return this.http.get<Libro>(`${environment.apiURL}/catalogo/${id}`);
+  }
+
 }

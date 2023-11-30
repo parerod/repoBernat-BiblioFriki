@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>misPrestamosPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">misPrestamosPage</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-botones></app-botones>
+
+  <ion-list *ngIf="lista != undefined">
+    <app-prestamos *ngFor="let libri of lista" [id] = "libri.id" [isbn] = "libri.isbn" [titulo] = "libri.titulo" [autores] = "libri.autores"></app-prestamos>
+  </ion-list>
+  <ion-label *ngIf="lista==undefined">
+    CARGANDO DATOS DE LA API 
+  </ion-label>
+</ion-content>

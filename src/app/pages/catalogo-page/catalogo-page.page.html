@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>catalogoPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">catalogoPage</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-botones></app-botones>
+
+  <ion-list>
+    <app-libro *ngFor="let libri of lista" [id] = "libri.id" [isbn] = "libri.isbn" [titulo] = "libri.titulo" [autores] = "libri.autores"></app-libro>
+  </ion-list>
+</ion-content>
